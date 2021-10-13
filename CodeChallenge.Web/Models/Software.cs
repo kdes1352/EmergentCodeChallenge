@@ -9,9 +9,10 @@
 
         public bool HigherVersion(string versionToCompare)
         {
-            var version1 = new Version(Version);
-            var version2 = new Version(versionToCompare);
-            var result = version1.CompareTo(version2);
+            // returns true if version 1 (the version from the list) is higher than version 2 (the number input by the user). 
+            var listVersion = new Version(Version);
+            var inputVersion = new Version(versionToCompare);
+            var result = listVersion.CompareTo(inputVersion);
             return result > 0;
         }
     }

@@ -1,7 +1,6 @@
 ﻿namespace CodeChallenge.Web.Data
 {
     using System.Collections.Generic;
-    using System.Linq;
     using Models;
 
     public static class SoftwareManager
@@ -56,12 +55,6 @@
                     Version = "0.7"
                 }
             };
-        }
-
-        public static IEnumerable<Software> GetHigherVersions(string versionToCompare)
-        {
-            var model = GetAllSoftware().Where(a => a.HigherVersion(versionToCompare)).ToList();
-            return model;
         }
     }
 }
