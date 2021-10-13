@@ -1,0 +1,41 @@
+﻿@model List<CodeChallenge.Web.Models.Software>
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Version Finder</h2>
+<p>Enter the version number of your software, and we will return a list of all software with a higher version number.</p>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new {id = "versionForm"}))
+{
+    <div class="form-group">
+        <input type="text" id="versionNumber" name="versionNumber" class="form-control" placeholder="Enter Version Number" required onkeypress="return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
+
+@if (Model.Any())
+{
+    <h3>Software Versions Higher Than @ViewBag.VersionInput</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Software</th>
+            <th scope="col">Version Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var version in Model)
+        {
+            <tr>
+                <td>@version.Name</td>
+                <td>@version.Version</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<script>
+    $('#versionForm').validate();
+</script>
